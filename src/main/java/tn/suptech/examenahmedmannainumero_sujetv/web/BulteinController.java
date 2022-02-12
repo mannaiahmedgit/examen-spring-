@@ -26,7 +26,8 @@ public class BulteinController {
     private NiveauService _niveauService;
     @Autowired
     private GenerationPdfService generationPdfService;
-
+    @Autowired
+    private  EmailSenderService emailSenderService;
     public BulteinController(ReleveNoteService _releveNoteService, UserService _userService, SemestreService _semestreService,NiveauService niveauService) {
         this._releveNoteService = _releveNoteService;
         this._userService = _userService;
@@ -48,14 +49,7 @@ public class BulteinController {
         return  _releveNoteService.getReleveNoteAnuelleByEleve(eleve,niveau);
 
     }
-    @RequestMapping("/genererRelevee/{idEleve}/{idNiveau}")
-    public Document genererReleveeNotesAnuelle (@PathVariable("idEleve") Long idEleve, @PathVariable("idNiveau") Long idNiveau) throws DocumentException, IOException {
-        Eleve eleve=(Eleve) _userService.getOne(idEleve);
-        Niveau niveau= _niveauService.getOne(idNiveau);
 
-
-        return  generationPdfService.genererReleveeNotesAnuelle(eleve,niveau);
-    }
     @RequestMapping("/genererRelevee2/{idEleve}/{idNiveau}")
     public void genererReleveeNotesAnuelle (HttpServletResponse response, @PathVariable("idEleve") Long idEleve, @PathVariable("idNiveau") Long idNiveau) throws DocumentException, IOException {
         response.setContentType("application/pdf");
@@ -68,4 +62,15 @@ public class BulteinController {
         PdfWriter.getInstance(document,response.getOutputStream()).open();
 
     }
+    @RequestMapping("/envoiBulleteinEleveMail/{idEleve}/{idNiveau}")
+    public void envoyerBulleteinAuEleve( @PathVariable("idEleve") Long idEleve, @PathVariable("idNiveau") Long idNiveau) throws DocumentException, IOException {
+        Eleve eleve=(Eleve) _userService.getOne(idEleve);
+        Niveau niveau= _niveauService.getOne(idNiveau);
+        Document document= generationPdfService.genererReleveeNotesAnuelle(eleve,niveau);
+
+        emailSenderService.envoiBuleteinAnuelle(eleve.getEmail(),"Buletein Anuelle","",document);
+
+    }
+
+
 }
