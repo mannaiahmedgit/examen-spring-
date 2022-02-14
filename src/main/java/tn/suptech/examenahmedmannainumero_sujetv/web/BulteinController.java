@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
-@RequestMapping(path="/api/bulletin")
+@RequestMapping(path="/bulletin")
 public class BulteinController {
     private ReleveNoteService _releveNoteService;
     private UserService _userService;

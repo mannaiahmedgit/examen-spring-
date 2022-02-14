@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 import tn.suptech.examenahmedmannainumero_sujetv.entities.User;
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
+    public  User findByLogin(String login);
 }

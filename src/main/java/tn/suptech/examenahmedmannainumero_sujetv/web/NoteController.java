@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path="/api")
+@RequestMapping(path="/gestionNotes")
 public class NoteController {
  private NoteService _noteService ;
 

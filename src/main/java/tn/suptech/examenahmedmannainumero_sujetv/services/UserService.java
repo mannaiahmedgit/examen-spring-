@@ -1,6 +1,7 @@
 package tn.suptech.examenahmedmannainumero_sujetv.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import tn.suptech.examenahmedmannainumero_sujetv.entities.User;
 import tn.suptech.examenahmedmannainumero_sujetv.repositories.UserRepository;
@@ -12,6 +13,8 @@ import java.util.List;
 @Transactional
 public class UserService {
     private  UserRepository _userRepository;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public UserService(UserRepository _userRepository) {
         this._userRepository = _userRepository;
@@ -24,6 +27,8 @@ public class UserService {
         return _userRepository.findById(id).get();
     }
     public User add(User user){
+        String  hashPasword= bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(hashPasword);
         return  _userRepository.save(user);
     }
 
@@ -35,5 +40,9 @@ public class UserService {
         User userDeletet=this.getOne(id);
         _userRepository.delete(userDeletet);
         return  userDeletet;
+    }
+
+    public User findByLogin(String login) {
+        return  _userRepository.findByLogin(login);
     }
 }

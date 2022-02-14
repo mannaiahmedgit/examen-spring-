@@ -27,19 +27,19 @@ import java.io.File;
 import java.io.OutputStream;
 
 @Service
-public class EmailSenderService {
-    @Autowired
-    private JavaMailSender javaMailSender;
-    public  void sendEmail(String to , String objet, String body){
-        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        simpleMailMessage.setFrom("mannai.ahmed5555@gmail.com");
-        simpleMailMessage.setTo(to);
-        simpleMailMessage.setText(body);
-        simpleMailMessage.setSubject(objet);
-        javaMailSender.send(simpleMailMessage);
-        System.out.println("email envoyé");
+    public class EmailSenderService {
+        @Autowired
+        private JavaMailSender javaMailSender;
+        public  void sendEmail(String to , String objet, String body){
+            SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+            simpleMailMessage.setFrom("mannai.ahmed5555@gmail.com");
+            simpleMailMessage.setTo(to);
+            simpleMailMessage.setText(body);
+            simpleMailMessage.setSubject(objet);
+            javaMailSender.send(simpleMailMessage);
+            System.out.println("email envoyé");
 
-    }
+        }
 
 
 

@@ -7,7 +7,7 @@ import tn.suptech.examenahmedmannainumero_sujetv.services.NiveauService;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/api")
+@RequestMapping(path="/gestionNiveau")
 public class NiveauController {
     private NiveauService  _niveauService ;
 

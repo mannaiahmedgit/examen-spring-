@@ -9,7 +9,7 @@ import tn.suptech.examenahmedmannainumero_sujetv.services.ExamenClassService;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/api")
+@RequestMapping(path="/gestionEnseignantMatiereClasseClass")
 public class EnseignantMatiereClasseClassController {
   private EnseignantMatiereClasseService _enseignantMatiereClasseService;
 

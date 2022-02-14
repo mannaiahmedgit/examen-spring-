@@ -13,7 +13,7 @@ import tn.suptech.examenahmedmannainumero_sujetv.services.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/api")
+@RequestMapping(path="/gestionExamenClass")
 public class ExamenClassController {
  private ExamenClassService _examenClassService;
 

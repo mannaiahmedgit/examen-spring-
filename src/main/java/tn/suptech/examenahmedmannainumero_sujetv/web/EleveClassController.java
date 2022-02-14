@@ -11,7 +11,7 @@ import tn.suptech.examenahmedmannainumero_sujetv.services.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/api")
+@RequestMapping(path="/gestionEleveClass")
 public class EleveClassController {
  private EleveClasseService _eleveClasseService;
 private UserService _userService;

@@ -8,7 +8,7 @@ import tn.suptech.examenahmedmannainumero_sujetv.services.ModuleService;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/api")
+@RequestMapping(path="/gestionModule")
 public class ModuleController {
     private ModuleService _moduleService;
 
